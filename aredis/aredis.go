@@ -1,18 +1,19 @@
-package acache
+package aredis
 
 import (
 	"context"
 	"encoding/json"
 	"time"
 
-	"github.com/go-redis/redis/v8"
+	"github.com/gabriellasaro/acache"
+	"github.com/redis/go-redis/v9"
 )
 
 type redisCache[K ~string] struct {
 	client *redis.Client
 }
 
-func NewRedis[K ~string](client *redis.Client) Cache[K] {
+func NewARedis[K ~string](client *redis.Client) acache.Cache[K] {
 	return &redisCache[K]{
 		client: client,
 	}
